@@ -9,6 +9,12 @@ type BitgetApiClient struct {
 	BitgetRestClient *common.BitgetRestClient
 }
 
+func NewBitgetApiClient(ApiKey, SecretKey, PASSPHRASE, BaseUrl string, TimeoutSecond int) *BitgetApiClient{
+	p := new(BitgetApiClient)
+    p.BitgetRestClient = common.NewBitgetRestClient(ApiKey, SecretKey, PASSPHRASE, BaseUrl, TimeoutSecond)
+    return p
+}
+
 func (p *BitgetApiClient) Init() *BitgetApiClient {
 	p.BitgetRestClient = new(common.BitgetRestClient).Init()
 	return p
@@ -27,3 +33,5 @@ func (p *BitgetApiClient) Get(url string, params map[string]string) (string, err
 	resp, err := p.BitgetRestClient.DoGet(url, params)
 	return resp, err
 }
+
+func (p *BitgetApiClient) Delete(url string, params map[string]string) (string, error) {

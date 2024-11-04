@@ -10,7 +10,6 @@ import (
 
 func Test_PlaceOrder(t *testing.T) {
 	client := new(v1.MixOrderClient).Init()
-
 	params := internal.NewParams()
 	params["symbol"] = "BTCUSDT_UMCBL"
 	params["marginCoin"] = "USDT"
